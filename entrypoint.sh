@@ -15,8 +15,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 echo Flutter version: "$(flutter --version)"
 echo dartcop version: "$(dartcop --version)"
 
-dartcop --options analysis_options.yaml . >> lint.xml
+echo "$(<analysis_options.yaml )"
 
-echo "$(<lint.xml )"
-
-cat lint.xml | reviewdog -f=checkstyle -name="ktlint" -reporter="${INPUT_REPORTER}" -filter-mode="${INPUT_FILTER_MODE}" -level="${INPUT_LEVEL}"
+dartcop --options analysis_options.yaml . \
+  | reviewdog -f=checkstyle -name="ktlint" -reporter="${INPUT_REPORTER}" -filter-mode="${INPUT_FILTER_MODE}" -level="${INPUT_LEVEL}"
