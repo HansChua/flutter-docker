@@ -15,5 +15,7 @@ cd "$GITHUB_WORKSPACE"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-dartcop .\
+echo Flutter version: "$(flutter --version)"
+echo dartcop version: "$(dartcop --version)"
+dartcop . \
   | reviewdog -f=checkstyle -name="ktlint" -reporter="${INPUT_REPORTER}" -filter-mode="${INPUT_FILTER_MODE}" -level="${INPUT_LEVEL}"
