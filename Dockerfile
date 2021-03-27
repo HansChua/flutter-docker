@@ -20,11 +20,12 @@ RUN curl -fSL https://github.com/kuronekomichael/dartcop/raw/master/src/dartcop/
     && chmod +x /usr/local/bin/dartcop
 
 # Setup Flutter
-ENV LANG en_US.UTF-8
-
 RUN /usr/local/flutter/bin/flutter doctor -v \
     && rm -rfv /flutter/bin/cache/artifacts/gradle_wrapper
     # @see https://circleci.com/docs/2.0/high-uid-error/
-    
+
 ENV PATH /usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:$PATH
 
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

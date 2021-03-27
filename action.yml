@@ -1,0 +1,47 @@
+name: 'Run ktlint with reviewdog'
+description: '🐶 Run ktlint with reviewdog on pull requests to enforce best practices'
+author: 'renatoabreu11 (ScaCap)'
+
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN'
+    required: true
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    required: false
+    default: 'error'
+  reporter:
+    description: |
+      Reporter of reviewdog command [github-pr-check,github-pr-review].
+      Default is github-pr-check.
+    required: false
+    default: 'github-pr-check'
+  fail_on_error:
+    description: |
+      Fails the current check if any error was found [true/false]
+      Default is false.
+    required: false
+    default: 'false'
+  filter_mode:
+    description: |
+      Filter mode of reviewdog command [added,diff_context,file,nofilter]
+      Default is added.
+    required: false
+    default: 'added'
+  relative:
+    description: Print files relative to the working directory
+    required: false
+    default: 'true'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.level }}
+    - ${{ inputs.reporter }}
+    - ${{ inputs.fail_on_error }}
+    - ${{ inputs.filter_mode }}
+    - ${{ inputs.relative }}
+branding:
+  icon: 'edit'
+  color: 'blue'
