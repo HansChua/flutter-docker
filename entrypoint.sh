@@ -15,9 +15,10 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 echo Flutter version: "$(flutter --version)"
 echo dartcop version: "$(dartcop --version)"
 
-echo $(ls)
-echo "$(cat analysis_options.yaml)"
-echo dartcop --options analysis_options.yaml .
+echo "$(dartcop --options analysis_options.yaml .)"
+echo "$(dartcop.py --options analysis_options.yaml .)"
+echo "$(python dartcop.py --options analysis_options.yaml .)"
+echo "$(python ./dartcop.py --options ./analysis_options.yaml .)"
 
-edartcop --options analysis_options.yaml . \
+dartcop --options analysis_options.yaml . \
   | reviewdog -f=checkstyle -name="ktlint" -reporter="${INPUT_REPORTER}" -filter-mode="${INPUT_FILTER_MODE}" -level="${INPUT_LEVEL}"
