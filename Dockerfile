@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y git wget unzip libgconf-2-4 gdb libstdc
 RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
 
 # Install reviewdog
-RUN curl -fSL https://github.com/haya14busa/reviewdog/releases/download/0.9.8/reviewdog_linux_amd64 -o /usr/local/bin/reviewdog \
-    && chmod +x /usr/local/bin/reviewdog
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/
 
 # Install dartcop (dartanalyzer wrapper)
 RUN curl -fSL https://github.com/HansChua/dartcop/raw/master/src/dartcop/dartcop.py -o /usr/local/bin/dartcop \
