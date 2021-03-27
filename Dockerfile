@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk12:jdk-12.0.2_10-alpine
+FROM adoptopenjdk/openjdk12:ubuntu-slim
 LABEL maintainer "Michael Kuroneko <hardwarehacking@gmail.com>"
 LABEL description="Flutter Develpment SDK"
 
