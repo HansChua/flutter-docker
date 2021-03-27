@@ -6,7 +6,7 @@ USER root
 ENV LANG en_US.UTF-8
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --allow git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 apt-utils apt-transport-https
+RUN apt-get update && apt-get install -y git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 apt-utils apt-transport-https
 
 # Install Flutter
 RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter \
