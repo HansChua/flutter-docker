@@ -19,9 +19,11 @@ RUN curl -fSL https://github.com/haya14busa/reviewdog/releases/download/0.9.8/re
 RUN curl -fSL https://github.com/HansChua/dartcop/raw/master/src/dartcop/dartcop.py -o /usr/local/bin/dartcop \
     && chmod +x /usr/local/bin/dartcop
 
+# Setup Dart
+RUN /usr/local/flutter/bin/cache/dart-sdk/bin/dart --disable-analytics
+
 # Setup Flutter
-RUN /usr/local/flutter/bin/flutter --disable-analytics \
-    && /usr/local/flutter/bin/flutter doctor -v \
+RUN /usr/local/flutter/bin/flutter doctor -v \
     && rm -rfv /flutter/bin/cache/artifacts/gradle_wrapper
     # @see https://circleci.com/docs/2.0/high-uid-error/
 
