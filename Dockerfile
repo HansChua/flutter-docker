@@ -1,12 +1,12 @@
-FROM jenkinsci/jnlp-slave:latest
+FROM alpine:3.11
 LABEL maintainer "Michael Kuroneko <hardwarehacking@gmail.com>"
 LABEL description="Flutter Develpment SDK"
 
 USER root
 ENV LANG en_US.UTF-8
 
-# Install dependencies
-RUN apt-get update && apt-get install -y openjdk12 \
+# Install java
+RUN apk --no-cache --update add git curl wget openjdk12 \
     && rm -rf /var/cache/apk/*
 
 # Install dependencies
