@@ -6,6 +6,10 @@ USER root
 ENV LANG en_US.UTF-8
 
 # Install dependencies
+RUN apt-get update && apt-get install -y openjdk12 \
+    && rm -rf /var/cache/apk/*
+
+# Install dependencies
 RUN apt-get update && apt-get install -y git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 apt-utils apt-transport-https
 
 # Install Flutter
