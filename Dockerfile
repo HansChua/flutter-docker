@@ -1,13 +1,9 @@
-FROM alpine:3.11
+FROM adoptopenjdk/openjdk12:jdk-12.0.2_10-alpine
 LABEL maintainer "Michael Kuroneko <hardwarehacking@gmail.com>"
 LABEL description="Flutter Develpment SDK"
 
 USER root
 ENV LANG en_US.UTF-8
-
-# Install java
-RUN apk --no-cache --update add git curl wget openjdk12 \
-    && rm -rf /var/cache/apk/*
 
 # Install dependencies
 RUN apt-get update && apt-get install -y git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 apt-utils apt-transport-https
