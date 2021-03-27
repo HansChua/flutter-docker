@@ -15,5 +15,5 @@ cd "$GITHUB_WORKSPACE"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-dartcop \
+dartcop .\
   | reviewdog -f=checkstyle -name="ktlint" -reporter="${INPUT_REPORTER}" -filter-mode="${INPUT_FILTER_MODE}" -level="${INPUT_LEVEL}"
