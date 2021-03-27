@@ -5,11 +5,13 @@ LABEL description="Flutter Develpment SDK"
 USER root
 ENV LANG en_US.UTF-8
 
+RUN apt-get update && apt-get install -y apt-transport-https
+
 RUN echo 'deb http://us.archive.ubuntu.com/ubuntu precise main multiverse' >> /etc/apt/sources.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
-    && apt-get update -y --force-yes \
+    && apt-get update -y --allow \
     # Install dependencies
-    && apt-get install -y --force-yes git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 \
+    && apt-get install -y --allow git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 \
     && apt-get clean \
     # Install Flutter
     && git clone https://github.com/flutter/flutter.git /usr/local/flutter \
