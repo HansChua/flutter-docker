@@ -15,7 +15,7 @@ RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/
 
 # Install dartcop (dartanalyzer wrapper)
-RUN curl -fSL https://github.com/kuronekomichael/dartcop/raw/master/src/dartcop/dartcop.py -o /usr/local/bin/dartcop \
+RUN curl -fSL https://github.com/HansChua/dartcop/raw/master/src/dartcop/dartcop.py -o /usr/local/bin/dartcop \
     && chmod +x /usr/local/bin/dartcop
 
 # Setup Flutter
